@@ -1,0 +1,52 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+
+dependencies {
+	
+	compile 'org.jboss.resteasy:resteasy-jaxrs:3.6.2.Final'
+		
+	providedCompile  'javax.servlet:javax.servlet-api:3.1.0'
+	
+	compile 'org.jboss.resteasy:resteasy-servlet-initializer:3.6.2.Final'
+	
+	compile  'org.jboss.resteasy:resteasy-jaxb-provider:3.6.2.Final'
+	
+	compile 'org.jboss.resteasy:resteasy-jackson-provider:3.6.2.Final'
+	
+	compile 'org.jboss.resteasy:resteasy-jackson2-provider:3.0.10.Final'
+	
+    compile 'org.slf4j:slf4j-api:1.7.25'
+
+   	testCompile 'junit:junit:4.12'
+    
+    compile  'org.jboss.resteasy:resteasy-guice:3.6.2.Final'
+    
+	compile  'com.google.inject:guice:3.0'
+	
+	compile group: 'org.jboss.resteasy', name: 'resteasy-jsapi', version: '3.6.2.Final'
+	
+
+	
+	compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+	
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
+	
+	
+	
+	compile group: 'org.jboss.resteasy', name: 'resteasy-guice', version: '3.6.2.Final'
+    
+	compile group: 'com.google.inject', name: 'guice', version: '3.0'
+	
+}
+
+

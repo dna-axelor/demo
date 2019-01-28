@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/employee</param-value>
+	</context-param>
+	
+	<context-param>
+        <param-name>resteasy.guice.modules</param-name>
+        <param-value>com.rest.jsp.AppModule</param-value>
+    </context-param>
+
+	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener
+		</listener-class>
+	</listener>
+
+	<servlet>
+
+		<servlet-name>RESTEasyService</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+		</servlet-class>
+
+		<!-- <init-param> <param-name>javax.ws.rs.Application</param-name> <param-value>com.rest.jsp.AppModule</param-value> 
+			</init-param> -->
+
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>RESTEasyService</servlet-name>
+		<url-pattern>/employee/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>
