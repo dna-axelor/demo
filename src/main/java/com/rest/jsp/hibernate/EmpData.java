@@ -3,10 +3,12 @@ package com.rest.jsp.hibernate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DataEmp") 
+@Table(name = "DataEmp")
 public class EmpData {
 
 	@Id
@@ -36,9 +38,9 @@ public class EmpData {
 		this.company = company;
 	}
 
-	@Column(name="Name")
+	@Column(name = "Name")
 	private String name;
-	@Column(name="Company")
+	@Column(name = "Company")
 	private String company;
 
 }

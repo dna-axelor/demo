@@ -99,7 +99,7 @@ a:hover, a:active {
 						<b>Submit</b>
 					</button></td>
 				<td><a href="http://localhost:8080/resteasy-jsp/display.jsp"><b>List</b></a></td>
-
+				<!--  ><td><a href="/resteasy-jsp/employee/test/run">Test</a></td>-->
 			</tr>
 		</table>
 

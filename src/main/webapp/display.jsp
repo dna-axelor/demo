@@ -1,12 +1,16 @@
-<%@ page import="java.sql.*"%>
-
-<%
-	Class.forName("org.postgresql.Driver");
-%>
+<%@page import="java.util.Iterator"%>
+<%@page import="com.rest.jsp.hibernate.EmpData"%>
+<%@page import="java.util.List"%>
 
 <HTML>
 <HEAD>
 <TITLE>Displaying Information</TITLE>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style>
 table {
 	border-collapse: collapse;
@@ -30,39 +34,53 @@ th {
 * {
 	box-sizing: border-box;
 }
-
 </style>
 </HEAD>
 
 <BODY>
 	<H1>Data of Interns</H1>
 
+	<%@ page import="com.rest.jsp.Dao.DisplayDao"%>
 	<%
-		Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Student", "axelor",
-				"axelor");
-
-		Statement statement = connection.createStatement();
-		ResultSet resultset = statement.executeQuery("select * from DataEmp");
+		DisplayDao Dd = new DisplayDao();
+		List results = Dd.Display();
+		Iterator iterator = results.iterator();
 	%>
+
+
 
 	<TABLE BORDER="1">
 		<TR>
 			<TH>ID</TH>
 			<TH>Name</TH>
 			<TH>Company</TH>
+			<TH colspan=2>Operation</TH>
 
 		</TR>
 		<%
-			while (resultset.next()) {
+			while (iterator.hasNext()) {
+		%>
+		<%
+			EmpData emp = (EmpData) iterator.next();
 		%>
 		<TR>
-			<TD><%=resultset.getString(1)%></td>
-			<TD><%=resultset.getString(3)%></TD>
-			<TD><%=resultset.getString(2)%></TD>
+			<TD><%=emp.getId()%></td>
+			<TD><%=emp.getName()%></TD>
+			<TD><%=emp.getCompany()%></TD>
+			<td><a href="http://localhost:8080/resteasy-jsp/Delete.jsp?id=<%=emp.getId()%>" onClick="check()">Delete</a></td>
+				<td><a href="http://localhost:8080/resteasy-jsp/Update.jsp?id=<%=emp.getId()%>">Update</a></td>
 		</TR>
 		<%
 			}
 		%>
 	</TABLE>
-</BODY>
+	<script type='text/javascript'>
+		function check() {
+			
+			 alert("Deleted.");
+			
+		}
+	</script>
+	
+	</BODY>
 </HTML>
